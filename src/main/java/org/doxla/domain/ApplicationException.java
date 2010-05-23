@@ -1,5 +1,9 @@
 package org.doxla.domain;
 
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
@@ -7,14 +11,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
+import static org.hibernate.search.annotations.Index.*;
 
 @Entity
+@Indexed
 public class ApplicationException {
-    @Id @GeneratedValue
+    @Id @GeneratedValue @DocumentId
     private Long identity;
+    @Field
     private String exceptionTrace;
     private String checksum;
 

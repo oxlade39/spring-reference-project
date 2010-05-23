@@ -16,6 +16,8 @@
                 hibernate.hbm2ddl.auto=${hibernate.ddl.mode}
                 hibernate.show.sql=${hibernate.show.sql}
                 hibernate.format.sql=${hibernate.format.sql}
+                hibernate.search.default.directory_provider=${hibernate.search.directory_provider}
+                hibernate.search.default.indexBase=${hibernate.search.index_base}
             </value>
         </property>
     </bean>
