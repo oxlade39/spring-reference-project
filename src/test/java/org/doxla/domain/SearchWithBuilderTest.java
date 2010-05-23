@@ -28,8 +28,9 @@ public class SearchWithBuilderTest extends SearchTestWithDefaultTestData {
 
     @Test
     public void testSearch() throws Exception {
+        String searchText = TO_SEARCH_FOR.split(" ")[1];
         List<ApplicationException> result = new ApplicationExceptionSearchBuilder(fullTextSession)
-                                                    .exception().search("search");
+                                                    .exception().search(searchText);
         assertFalse(result.isEmpty());
         assertTrue(result.contains(new ApplicationException(TO_SEARCH_FOR)));
     }
