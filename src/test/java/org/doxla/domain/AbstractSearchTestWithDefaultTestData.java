@@ -17,23 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {
-                "classpath:/spring/hibernate-context.xml",
-                "classpath:/spring/transaction-context.xml"
-})
-@TransactionConfiguration
-@Transactional
-@Ignore("Just a test helper")
-public class SearchTestWithDefaultTestData {
+@Ignore("test infrastructure")
+public class AbstractSearchTestWithDefaultTestData extends AbstractHibernateTest {
     protected static final String TO_SEARCH_FOR = "to search for";
     
-    @Autowired
-    private SessionFactory sessionFactory;
-
-
+    @Override
     protected FullTextSession session() {
-        return Search.getFullTextSession(sessionFactory.getCurrentSession());
+        return Search.getFullTextSession(super.session());
     }
 
 

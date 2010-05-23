@@ -28,7 +28,7 @@
         <dependency>
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>1.8.0.10</version>
+            <version>1.8.0.7</version>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -85,6 +85,11 @@
             <artifactId>commons-lang</artifactId>
             <version>2.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>org.springframework.integration</artifactId>
+            <version>1.0.3.RELEASE</version>
+        </dependency>
 
 
         <dependency>
@@ -121,4 +126,5 @@
         </plugin>
       </plugins>
     </build>
+
 </project>

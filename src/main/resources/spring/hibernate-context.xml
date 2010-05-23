@@ -11,14 +11,14 @@
           p:packagesToScan="org.doxla.domain"
           p:dataSource-ref="dataSource" >
         <property name="hibernateProperties">
-            <value>
-                hibernate.dialect=${hibernate.dialect}
-                hibernate.hbm2ddl.auto=${hibernate.ddl.mode}
-                hibernate.show.sql=${hibernate.show.sql}
-                hibernate.format.sql=${hibernate.format.sql}
-                hibernate.search.default.directory_provider=${hibernate.search.directory_provider}
-                hibernate.search.default.indexBase=${hibernate.search.index_base}
-            </value>
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.ddl.mode}</prop>
+                <prop key="hibernate.show.sql">${hibernate.show.sql}</prop>
+                <prop key="hibernate.format.sql">${hibernate.format.sql}</prop>
+                <prop key="hibernate.search.default.directory_provider">${hibernate.search.directory_provider}</prop>
+                <prop key="hibernate.search.default.indexBase">${hibernate.search.index_base}</prop>
+            </props>
         </property>
     </bean>
 
