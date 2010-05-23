@@ -1,8 +1,15 @@
 package org.doxla.domain;
 
+import org.springframework.util.DigestUtils;
+import org.springframework.util.StringUtils;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @Entity
 public class ApplicationException {
@@ -14,9 +21,10 @@ public class ApplicationException {
     public ApplicationException() {
     }
 
-    public ApplicationException(String exceptionTrace, String checksum) {
+    public ApplicationException(String exceptionTrace) {
+        if(!StringUtils.hasText(exceptionTrace)) throw new IllegalArgumentException("Exception trace must have text");
         this.exceptionTrace = exceptionTrace;
-        this.checksum = checksum;
+        this.checksum = DigestUtils.md5DigestAsHex(exceptionTraceAsBytes(exceptionTrace));
     }
 
     public String getExceptionTrace() {
@@ -43,4 +51,13 @@ public class ApplicationException {
     public int hashCode() {
         return checksum != null ? checksum.hashCode() : 0;
     }
+
+    private byte[] exceptionTraceAsBytes(String exceptionTrace) {
+        try{
+            return exceptionTrace.getBytes("UTF-8");
+        }catch (UnsupportedEncodingException e) {
+            throw new RuntimeException("UTF-8 not supported but required");
+        }
+    }
+
 }

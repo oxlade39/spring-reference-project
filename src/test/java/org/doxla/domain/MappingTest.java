@@ -3,7 +3,6 @@ package org.doxla.domain;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
-import org.hibernate.util.EqualsHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class MappingTest {
 
     @Test
     public void testMapping() {
-        ApplicationException exception = new ApplicationException("some trace", "a checksum");
+        ApplicationException exception = new ApplicationException("some trace");
         Serializable id = session().save(exception);
         session().flush();
         session().clear();
