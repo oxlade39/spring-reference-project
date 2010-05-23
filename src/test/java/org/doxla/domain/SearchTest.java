@@ -36,7 +36,7 @@ public class SearchTest extends SearchTestWithDefaultTestData {
         org.apache.lucene.search.Query query = parser.parse( "search" );
 
         // wrap Lucene query in a org.hibernate.Query
-        org.hibernate.Query hibQuery = fullTextSession.createFullTextQuery(query, ApplicationException.class);
+        org.hibernate.Query hibQuery = session().createFullTextQuery(query, ApplicationException.class);
 
         // execute search
         List result = hibQuery.list();

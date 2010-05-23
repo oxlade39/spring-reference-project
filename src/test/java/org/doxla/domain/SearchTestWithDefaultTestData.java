@@ -6,6 +6,7 @@ import org.hibernate.classic.Session;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.Search;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -23,23 +24,21 @@ import java.util.List;
 })
 @TransactionConfiguration
 @Transactional
+@Ignore("Just a test helper")
 public class SearchTestWithDefaultTestData {
     protected static final String TO_SEARCH_FOR = "to search for";
     
     @Autowired
     private SessionFactory sessionFactory;
 
-    protected FullTextSession fullTextSession;
 
-    private Session session() {
-        return sessionFactory.getCurrentSession();
+    protected FullTextSession session() {
+        return Search.getFullTextSession(sessionFactory.getCurrentSession());
     }
+
 
     @Before
     public void createData() {
-
-        fullTextSession = Search.getFullTextSession(session());
-
         ApplicationException toSave = new ApplicationException(SearchWithBuilderTest.TO_SEARCH_FOR);
         session().save(toSave);
 
@@ -48,6 +47,6 @@ public class SearchTestWithDefaultTestData {
             session().save(toSave);
         }
         session().flush();
-        fullTextSession.flushToIndexes();
+        session().flushToIndexes();
     }
 }
