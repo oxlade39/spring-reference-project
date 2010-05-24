@@ -6,17 +6,17 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Indexed
+//@Indexed
 public class ApplicationExceptionEvent {
-    @Id @GeneratedValue @DocumentId
+    @Id @GeneratedValue
     private Long identity;
 
-    @Field(index = Index.UN_TOKENIZED, store = Store.YES)
-    @DateBridge(resolution = Resolution.DAY)
+//    @Field(index = Index.UN_TOKENIZED, store = Store.YES)
+//    @DateBridge(resolution = Resolution.DAY)
     private Date occured;
 
+//    @IndexedEmbedded
     @ManyToOne(cascade = {CascadeType.ALL})
-    @IndexedEmbedded
     private ApplicationException exception;
 
     public ApplicationExceptionEvent() {

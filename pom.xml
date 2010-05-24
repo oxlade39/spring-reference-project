@@ -18,12 +18,12 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
-            <version>3.4.0.GA</version>
+            <version>3.5.1-Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-search</artifactId>
-            <version>3.1.0.GA</version>
+            <version>3.2.0.CR1</version>
         </dependency>
         <dependency>
             <groupId>hsqldb</groupId>
@@ -38,22 +38,22 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.core</artifactId>
-            <version>3.0.0.RELEASE</version>
+            <version>3.0.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.beans</artifactId>
-            <version>3.0.0.RELEASE</version>
+            <version>3.0.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.context</artifactId>
-            <version>3.0.0.RELEASE</version>
+            <version>3.0.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.orm</artifactId>
-            <version>3.0.0.RELEASE</version>
+            <version>3.0.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
@@ -90,7 +90,21 @@
             <artifactId>org.springframework.integration</artifactId>
             <version>1.0.3.RELEASE</version>
         </dependency>
-
+        <dependency>
+           <groupId>org.apache.solr</groupId>
+           <artifactId>solr-common</artifactId>
+           <version>1.4.0</version>
+        </dependency>
+        <dependency>
+           <groupId>org.apache.solr</groupId>
+           <artifactId>solr-core</artifactId>
+           <version>1.4.0</version>
+        </dependency>
+        <dependency>
+           <groupId>org.apache.lucene</groupId>
+           <artifactId>lucene-snowball</artifactId>
+           <version>2.4.1</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -101,7 +115,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.test</artifactId>
-            <version>3.0.0.RELEASE</version>
+            <version>3.0.2.RELEASE</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -126,5 +140,25 @@
         </plugin>
       </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>com.springsource.repository.bundles.release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+        <repository>
+          <id>repository.jboss.org</id>
+          <name>JBoss Maven Repository</name>
+          <url>http://repository.jboss.org/maven2</url>
+          <layout>default</layout>
+        </repository>
+        
+    </repositories>
 
 </project>

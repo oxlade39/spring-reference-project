@@ -12,11 +12,11 @@ public class SearchWithBuilderTest extends AbstractSearchTestWithDefaultTestData
 
     @Test
     public void testSearch() throws Exception {
-        String searchText = TO_SEARCH_FOR.split(" ")[1];
+        String searchText = "IllegalArgumentException";
         List<ApplicationException> result = new ApplicationExceptionSearchBuilder(session())
                                                     .exception().search(searchText);
         assertFalse(result.isEmpty());
-        assertTrue(result.contains(new ApplicationException(TO_SEARCH_FOR)));
+        assertTrue(result.contains(new ApplicationException(EXCEPTION_TRACE)));
     }
 
 }

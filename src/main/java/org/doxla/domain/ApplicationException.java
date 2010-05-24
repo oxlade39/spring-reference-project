@@ -15,11 +15,10 @@ import java.io.UnsupportedEncodingException;
 import static org.hibernate.search.annotations.Index.*;
 
 @Entity
-@Indexed
+//@Indexed
 public class ApplicationException {
-    @Id @GeneratedValue @DocumentId
+    @Id @GeneratedValue
     private Long identity;
-    @Field
     private String exceptionTrace;
     private String checksum;
 
