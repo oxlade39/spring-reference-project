@@ -12,7 +12,7 @@ public class SearchWithBuilderTest extends AbstractSearchTestWithDefaultTestData
 
     @Test
     public void testSearch() throws Exception {
-        String searchText = "IllegalArgumentException";
+        String searchText = "java.lang.IllegalArgumentException";
         List<ApplicationException> result = new ApplicationExceptionSearchBuilder(session())
                                                     .exception().search(searchText);
         assertFalse(result.isEmpty());

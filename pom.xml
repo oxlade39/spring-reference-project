@@ -92,11 +92,6 @@
         </dependency>
         <dependency>
            <groupId>org.apache.solr</groupId>
-           <artifactId>solr-common</artifactId>
-           <version>1.4.0</version>
-        </dependency>
-        <dependency>
-           <groupId>org.apache.solr</groupId>
            <artifactId>solr-core</artifactId>
            <version>1.4.0</version>
         </dependency>

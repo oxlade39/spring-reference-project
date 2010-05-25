@@ -30,22 +30,13 @@ public class ApplicationExceptionSearchBuilder {
     }
 
     public List<ApplicationException> search(String search) {
-        Analyzer analyzer = fullTextSession.getSearchFactory().getAnalyzer("default");
-        MultiFieldQueryParser standard = new MultiFieldQueryParser(
-                Version.LUCENE_29,
-                searchFields.toArray(new String[searchFields.size()]),
-                analyzer);
-
         Analyzer dotReplaceAnalyzer = fullTextSession.getSearchFactory().getAnalyzer("dotReplaced");
         MultiFieldQueryParser dotReplaceParser = new MultiFieldQueryParser(
                 Version.LUCENE_29,
                 searchFields.toArray(new String[searchFields.size()]),
                 dotReplaceAnalyzer);        
         try {
-            org.apache.lucene.search.Query query =
-                    standard.parse( search ).combine(new Query[]{
-                            dotReplaceParser.parse(search)
-            });
+            org.apache.lucene.search.Query query = dotReplaceParser.parse(search);
             org.hibernate.Query hibQuery = fullTextSession.createFullTextQuery(query, ApplicationException.class);
             return hibQuery.list();
         } catch (ParseException e) {
