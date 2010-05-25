@@ -23,12 +23,4 @@
         <property name="searchMapping" value="org.doxla.lucene.MySearchMapping" />
     </bean>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close"
-          p:driverClassName="${database.driver.classname}"
-          p:url="${database.url}"
-          p:username="${database.username}"
-          p:password="${database.password}"/>
-
-
 </beans>

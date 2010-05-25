@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
+                "classpath:/spring/database-context.xml",
                 "classpath:/spring/hibernate-context.xml",
                 "classpath:/spring/transaction-context.xml"
 })

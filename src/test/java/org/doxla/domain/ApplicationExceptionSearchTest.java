@@ -6,10 +6,12 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.doxla.domain.DataCreator.TO_SEARCH_FOR;
+import static org.hibernate.search.Search.getFullTextSession;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class ApplicationExceptionSearchTest extends AbstractSearchTestWithDefaultTestData {
+public class ApplicationExceptionSearchTest extends AbstractHibernateTest {
 
     @Test
     public void testSearch() throws Exception {
@@ -19,7 +21,7 @@ public class ApplicationExceptionSearchTest extends AbstractSearchTestWithDefaul
         org.apache.lucene.search.Query query = parser.parse( "search" );
 
         // wrap Lucene query in a org.hibernate.Query
-        org.hibernate.Query hibQuery = session().createFullTextQuery(query, ApplicationException.class);
+        org.hibernate.Query hibQuery = getFullTextSession(session()).createFullTextQuery(query, ApplicationException.class);
 
         // execute search
         List result = hibQuery.list();
