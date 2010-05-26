@@ -6,16 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-//@Indexed
 public class ApplicationExceptionEvent {
     @Id @GeneratedValue
     private Long identity;
 
-//    @Field(index = Index.UN_TOKENIZED, store = Store.YES)
-//    @DateBridge(resolution = Resolution.DAY)
     private Date occured;
 
-//    @IndexedEmbedded
     @ManyToOne(cascade = {CascadeType.ALL})
     private ApplicationException exception;
 

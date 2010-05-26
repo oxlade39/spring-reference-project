@@ -1,46 +1,31 @@
 package org.doxla.domain.search;
 
-import com.sun.org.apache.bcel.internal.util.InstructionFinder;
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.SimpleAnalyzer;
-import org.apache.lucene.analysis.WhitespaceAnalyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.queryParser.MultiFieldQueryParser;
 import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.util.Version;
 import org.doxla.domain.ApplicationException;
 import org.hibernate.search.FullTextSession;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ApplicationExceptionSearchBuilder {
-    private final FullTextSession fullTextSession;
+import static org.doxla.domain.search.DomainFieldSearchBuilder.domainFieldSearchBuilder;
 
-    private List<String> searchFields = new ArrayList<String>();
+public class ApplicationExceptionSearchBuilder implements DomainSearch<ApplicationException>{
+    private final DomainFieldSearchBuilder<ApplicationException> domainFieldSearchBuilder;
 
     public ApplicationExceptionSearchBuilder(FullTextSession fullTextSession) {
-        this.fullTextSession = fullTextSession;
+        this.domainFieldSearchBuilder = domainFieldSearchBuilder(fullTextSession, ApplicationException.class);
     }
 
     public ApplicationExceptionSearchBuilder exception() {
-        searchFields.add("exceptionTrace");
+        domainFieldSearchBuilder.forSearchField("exceptionTrace");
         return this;
     }
 
-    public List<ApplicationException> search(String search) {
-        Analyzer dotReplaceAnalyzer = fullTextSession.getSearchFactory().getAnalyzer("dotReplaced");
-        MultiFieldQueryParser dotReplaceParser = new MultiFieldQueryParser(
-                Version.LUCENE_29,
-                searchFields.toArray(new String[searchFields.size()]),
-                dotReplaceAnalyzer);        
-        try {
-            org.apache.lucene.search.Query query = dotReplaceParser.parse(search);
-            org.hibernate.Query hibQuery = fullTextSession.createFullTextQuery(query, ApplicationException.class);
-            return hibQuery.list();
-        } catch (ParseException e) {
-            throw new RuntimeException("ParseException with query: "+search, e);
-        }
+    public ApplicationExceptionSearchBuilder checksum() {
+        domainFieldSearchBuilder.forSearchField("checksum");
+        return this;
+    }
+
+    public List<ApplicationException> executeSearch(String search) {
+        return domainFieldSearchBuilder.executeSearch(search);
     }
 }
