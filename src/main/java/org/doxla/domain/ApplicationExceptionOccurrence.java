@@ -1,24 +1,22 @@
 package org.doxla.domain;
 
-import org.hibernate.search.annotations.*;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class ApplicationExceptionEvent {
+public class ApplicationExceptionOccurrence {
     @Id @GeneratedValue
     private Long identity;
 
     private Date occured;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     private ApplicationException exception;
 
-    public ApplicationExceptionEvent() {
+    public ApplicationExceptionOccurrence() {
     }
 
-    public ApplicationExceptionEvent(ApplicationException exception) {
+    ApplicationExceptionOccurrence(ApplicationException exception) {
         this.exception = exception;
         this.occured = new Date();
     }
@@ -36,7 +34,7 @@ public class ApplicationExceptionEvent {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ApplicationExceptionEvent event = (ApplicationExceptionEvent) o;
+        ApplicationExceptionOccurrence event = (ApplicationExceptionOccurrence) o;
 
         if (exception != null ? !exception.equals(event.exception) : event.exception != null) return false;
         if (occured != null ? !occured.equals(event.occured) : event.occured != null) return false;

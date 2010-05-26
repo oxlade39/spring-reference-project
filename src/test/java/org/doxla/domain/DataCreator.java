@@ -17,8 +17,7 @@ import javax.annotation.PostConstruct;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-@Transactional
-public class DataCreator implements TransactionCallback<Object> {
+public class DataCreator implements TransactionCallback<DataCreator> {
 
     public static final String TO_SEARCH_FOR = "to search for";
     public static final String EXCEPTION_TRACE = generateExceptionTrace();
@@ -44,7 +43,7 @@ public class DataCreator implements TransactionCallback<Object> {
         return stringWriter.toString();
     }
 
-    public Object doInTransaction(TransactionStatus transactionStatus) {
+    public DataCreator doInTransaction(TransactionStatus transactionStatus) {
         FullTextSession session = Search.getFullTextSession(sessionFactory.getCurrentSession());
 
         ApplicationException toSave = new ApplicationException(EXCEPTION_TRACE);

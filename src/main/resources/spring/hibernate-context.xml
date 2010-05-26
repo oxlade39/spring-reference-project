@@ -14,8 +14,8 @@
             <props>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.ddl.mode}</prop>
-                <prop key="hibernate.show.sql">${hibernate.show.sql}</prop>
-                <prop key="hibernate.format.sql">${hibernate.format.sql}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show.sql}</prop>
+                <prop key="hibernate.format_sql">${hibernate.format.sql}</prop>
                 <prop key="hibernate.search.default.directory_provider">${hibernate.search.directory_provider}</prop>
                 <prop key="hibernate.search.default.indexBase">${hibernate.search.index_base}</prop>
             </props>
