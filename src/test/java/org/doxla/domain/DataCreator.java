@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.Search;
+import org.hibernate.search.batchindexing.Executors;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -27,7 +28,6 @@ public class DataCreator implements TransactionCallback<DataCreator> {
     @Autowired
     private PlatformTransactionManager transactionManager;
 
-
     @PostConstruct
     public void createData() {
         new TransactionTemplate(transactionManager).execute(this);
@@ -48,14 +48,28 @@ public class DataCreator implements TransactionCallback<DataCreator> {
 
         ApplicationException toSave = new ApplicationException(EXCEPTION_TRACE);
         session.save(toSave);
+        addTenOccurrences(toSave);
+
         session.save(new ApplicationException(TO_SEARCH_FOR));
 
         for(int i = 0; i < 100; i++) {
             toSave = new ApplicationException(RandomStringUtils.randomAlphabetic(i + 1));
             session.save(toSave);
+            addTenOccurrences(toSave);
         }
         session.flush();
         session.flushToIndexes();
         return this;
+    }
+
+    private void addTenOccurrences(ApplicationException toSave) {
+        for(int i = 0; i<10; i++) {
+            try {
+                Thread.sleep(11L);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            toSave.addOccurrenceNow();
+        }
     }
 }
