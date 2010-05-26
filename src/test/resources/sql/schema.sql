@@ -18,6 +18,7 @@ add constraint FK56A30DB2E2801A1
 foreign key (exception_identity) references ApplicationException;
 
 create unique index APPLICATION_EXCEPTION_PK on ApplicationException (identity);
+create unique index APPLICATION_EXCEPTION_MD5 on ApplicationException (checksum);  
 
 create unique index APPLICATION_EXCEPTION_OCCURRENCE_PK on ApplicationExceptionOccurrence (identity);
 create index APPLICATION_EXCEPTION_OCCURRENCE_FK1 on ApplicationExceptionOccurrence (exception_identity);
