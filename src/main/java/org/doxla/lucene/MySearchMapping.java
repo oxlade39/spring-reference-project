@@ -8,7 +8,12 @@ import org.hibernate.search.cfg.SearchMapping;
 
 import java.lang.annotation.ElementType;
 
+import static java.lang.annotation.ElementType.FIELD;
+
 public class MySearchMapping extends SearchMapping {
+
+    public static final String DEFAULT_ANALYZER_NAME = "default";
+    public static final String EXCEPTION_ANALYZER_NAME = "dotReplaced";
 
 
     @Factory
@@ -16,9 +21,9 @@ public class MySearchMapping extends SearchMapping {
         SearchMapping mapping = new SearchMapping();
 
     mapping
-        .analyzerDef( "default", StandardTokenizerFactory.class )
+        .analyzerDef( DEFAULT_ANALYZER_NAME, StandardTokenizerFactory.class )
             .filter( LowerCaseFilterFactory.class )
-        .analyzerDef( "dotReplaced", PatternTokenizerFactory.class)
+        .analyzerDef( EXCEPTION_ANALYZER_NAME, PatternTokenizerFactory.class)
             .tokenizerParam("pattern", "(\\.)|(\\s+)")
             .filter( LowerCaseFilterFactory.class )
             .filter( PatternReplaceFilterFactory.class )
@@ -28,16 +33,16 @@ public class MySearchMapping extends SearchMapping {
 
         .entity(ApplicationException.class)
             .indexed()
-            .property("identity", ElementType.FIELD)
+            .property("identity", FIELD)
                 .documentId()
-            .property("exceptionTrace", ElementType.FIELD)
+            .property("exceptionTrace", FIELD)
                 .field()
                     .name("exceptionTrace")
-                    .analyzer("dotReplaced")
-            .property("checksum", ElementType.FIELD)
+                    .analyzer(EXCEPTION_ANALYZER_NAME)
+            .property("checksum", FIELD)
                 .field()
                     .name("checksum")
-                    .analyzer("default");
+                    .analyzer(DEFAULT_ANALYZER_NAME);
 
         return mapping;
     }

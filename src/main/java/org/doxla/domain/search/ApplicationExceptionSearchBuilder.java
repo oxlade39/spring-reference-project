@@ -1,18 +1,19 @@
 package org.doxla.domain.search;
 
-import org.apache.lucene.queryParser.ParseException;
 import org.doxla.domain.ApplicationException;
 import org.hibernate.search.FullTextSession;
 
 import java.util.List;
 
 import static org.doxla.domain.search.DomainFieldSearchBuilder.domainFieldSearchBuilder;
+import static org.doxla.lucene.MySearchMapping.EXCEPTION_ANALYZER_NAME;
 
-public class ApplicationExceptionSearchBuilder implements DomainSearch<ApplicationException>{
+public class ApplicationExceptionSearchBuilder implements DomainSearch<ApplicationException> {
     private final DomainFieldSearchBuilder<ApplicationException> domainFieldSearchBuilder;
 
     public ApplicationExceptionSearchBuilder(FullTextSession fullTextSession) {
-        this.domainFieldSearchBuilder = domainFieldSearchBuilder(fullTextSession, ApplicationException.class);
+        domainFieldSearchBuilder = domainFieldSearchBuilder(fullTextSession, ApplicationException.class);
+        domainFieldSearchBuilder.withAnalyzerName(EXCEPTION_ANALYZER_NAME);
     }
 
     public ApplicationExceptionSearchBuilder exception() {
