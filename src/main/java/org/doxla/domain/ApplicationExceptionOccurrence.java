@@ -8,7 +8,7 @@ public class ApplicationExceptionOccurrence {
     @Id @GeneratedValue
     private Long identity;
 
-    private Date occured;
+    private Date occurred;
 
     @ManyToOne
     private ApplicationException exception;
@@ -18,11 +18,11 @@ public class ApplicationExceptionOccurrence {
 
     ApplicationExceptionOccurrence(ApplicationException exception) {
         this.exception = exception;
-        this.occured = new Date();
+        this.occurred = new Date();
     }
 
     public Date getWhen() {
-        return occured;
+        return occurred;
     }
 
     public ApplicationException getException() {
@@ -37,14 +37,14 @@ public class ApplicationExceptionOccurrence {
         ApplicationExceptionOccurrence event = (ApplicationExceptionOccurrence) o;
 
         if (exception != null ? !exception.equals(event.exception) : event.exception != null) return false;
-        if (occured != null ? !occured.equals(event.occured) : event.occured != null) return false;
+        if (occurred != null ? !occurred.equals(event.occurred) : event.occurred != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = occured != null ? occured.hashCode() : 0;
+        int result = occurred != null ? occurred.hashCode() : 0;
         result = 31 * result + (exception != null ? exception.hashCode() : 0);
         return result;
     }
