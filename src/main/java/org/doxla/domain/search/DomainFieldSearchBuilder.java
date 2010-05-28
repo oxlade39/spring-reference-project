@@ -40,11 +40,11 @@ public class DomainFieldSearchBuilder<T> implements DomainSearch<T> {
     }
 
     private Query createLuceneQuery(String search) throws ParseException {
-        Analyzer dotReplaceAnalyzer = fullTextSession.getSearchFactory().getAnalyzer(analyzerName);
+        Analyzer analyzer = fullTextSession.getSearchFactory().getAnalyzer(analyzerName);
         MultiFieldQueryParser dotReplaceParser = new MultiFieldQueryParser(
                 Version.LUCENE_29,
                 searchFields.toArray(new String[searchFields.size()]),
-                dotReplaceAnalyzer);
+                analyzer);
         return dotReplaceParser.parse(search);
     }
 
