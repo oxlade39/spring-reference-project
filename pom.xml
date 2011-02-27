@@ -12,6 +12,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--<spring.version>3.0.5.RELEASE</spring.version>-->
+        <spring.version>3.1.0.M1</spring.version>
+        <!--<spring.version>3.1.0.RC1</spring.version>-->
     </properties>
 
     <dependencies>
@@ -37,23 +40,23 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.core</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.beans</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.context</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.orm</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
@@ -100,20 +103,20 @@
             <artifactId>commons-lang</artifactId>
             <version>2.4</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.integration</groupId>-->
+            <!--<artifactId>org.springframework.integration</artifactId>-->
+            <!--<version>1.0.3.RELEASE</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>org.springframework.integration</groupId>
-            <artifactId>org.springframework.integration</artifactId>
-            <version>1.0.3.RELEASE</version>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-core</artifactId>
+            <version>1.4.0</version>
         </dependency>
         <dependency>
-           <groupId>org.apache.solr</groupId>
-           <artifactId>solr-core</artifactId>
-           <version>1.4.0</version>
-        </dependency>
-        <dependency>
-           <groupId>org.apache.lucene</groupId>
-           <artifactId>lucene-snowball</artifactId>
-           <version>2.4.1</version>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-snowball</artifactId>
+            <version>2.4.1</version>
         </dependency>
 
         <dependency>
@@ -121,11 +124,11 @@
             <artifactId>junit</artifactId>
             <version>4.8.1</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.test</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -138,17 +141,17 @@
     </dependencies>
 
     <build>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.0.2</version>
-          <configuration>
-            <source>1.5</source>
-            <target>1.5</target>
-          </configuration>
-        </plugin>
-      </plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <repositories>
@@ -163,12 +166,22 @@
             <url>http://repository.springsource.com/maven/bundles/external</url>
         </repository>
         <repository>
-          <id>repository.jboss.org</id>
-          <name>JBoss Maven Repository</name>
-          <url>http://repository.jboss.org/maven2</url>
-          <layout>default</layout>
+            <id>SpringRepo</id>
+            <name>Spring Maven Repository</name>
+            <url>http://s3.amazonaws.com/maven.springframework.org/milestone</url>
         </repository>
-        
+        <repository>
+            <id>SpringRepo</id>
+            <name>Spring Maven Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
+        <repository>
+            <id>repository.jboss.org</id>
+            <name>JBoss Maven Repository</name>
+            <url>http://repository.jboss.org/maven2</url>
+            <layout>default</layout>
+        </repository>
+
     </repositories>
 
 </project>

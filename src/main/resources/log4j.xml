@@ -10,7 +10,7 @@
     </appender>
 
     <logger name="org.hibernate.SQL">
-        <level value="DEBUG"/>
+        <level value="ERROR"/>
     </logger>
 
     <logger name="org.springframework">

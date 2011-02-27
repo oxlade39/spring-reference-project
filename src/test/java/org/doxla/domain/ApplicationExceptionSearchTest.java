@@ -11,7 +11,7 @@ import static org.hibernate.search.Search.getFullTextSession;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class ApplicationExceptionSearchTest extends AbstractHibernateTest {
+public class ApplicationExceptionSearchTest extends AbstractHibernateTestInfrastructure {
 
     @Test
     public void testSearch() throws Exception {

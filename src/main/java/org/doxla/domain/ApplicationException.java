@@ -1,20 +1,18 @@
 package org.doxla.domain;
 
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Store;
-import org.springframework.util.DigestUtils;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.util.StringUtils;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
-import static org.hibernate.search.annotations.Index.*;
 
 @Entity
 //@Indexed
@@ -32,7 +30,7 @@ public class ApplicationException {
     public ApplicationException(String exceptionTrace) {
         if(!StringUtils.hasText(exceptionTrace)) throw new IllegalArgumentException("Exception trace must have text");
         this.exceptionTrace = exceptionTrace;
-        this.checksum = DigestUtils.md5DigestAsHex(exceptionTraceAsBytes(exceptionTrace));
+        this.checksum = DigestUtils.md5Hex(exceptionTraceAsBytes(exceptionTrace));
         addOccurrenceNow();
     }
 

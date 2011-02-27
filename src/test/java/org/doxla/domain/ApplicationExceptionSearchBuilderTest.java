@@ -10,7 +10,7 @@ import static org.hibernate.search.Search.getFullTextSession;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class ApplicationExceptionSearchBuilderTest extends AbstractHibernateTest {
+public class ApplicationExceptionSearchBuilderTest extends AbstractHibernateTestInfrastructure {
 
     @Test
     public void testExceptionSearch() throws Exception {
