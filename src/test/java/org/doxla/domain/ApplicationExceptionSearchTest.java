@@ -2,16 +2,20 @@ package org.doxla.domain;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
+import org.hibernate.search.FullTextSession;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 import static org.doxla.domain.DataCreator.TO_SEARCH_FOR;
-import static org.hibernate.search.Search.getFullTextSession;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class ApplicationExceptionSearchTest extends AbstractHibernateTestInfrastructure {
+
+    @Autowired
+    private FullTextSession fullTextSession;
 
     @Test
     public void testSearch() throws Exception {
@@ -21,7 +25,7 @@ public class ApplicationExceptionSearchTest extends AbstractHibernateTestInfrast
         org.apache.lucene.search.Query query = parser.parse( "search" );
 
         // wrap Lucene query in a org.hibernate.Query
-        org.hibernate.Query hibQuery = getFullTextSession(session()).createFullTextQuery(query, ApplicationException.class);
+        org.hibernate.Query hibQuery = fullTextSession.createFullTextQuery(query, ApplicationException.class);
 
         // execute search
         List result = hibQuery.list();

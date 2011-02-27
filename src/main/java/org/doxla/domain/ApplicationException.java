@@ -15,7 +15,6 @@ import java.util.Set;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
-//@Indexed
 public class ApplicationException {
     @Id @GeneratedValue
     private Long identity;

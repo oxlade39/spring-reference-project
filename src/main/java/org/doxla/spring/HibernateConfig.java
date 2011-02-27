@@ -2,11 +2,14 @@ package org.doxla.spring;
 
 import org.doxla.lucene.CustomAnnotationSessionFactoryBean;
 import org.doxla.lucene.MySearchMapping;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.search.cfg.SearchMapping;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.orm.hibernate3.HibernateTransactionManager;
 import org.springframework.transaction.support.AbstractPlatformTransactionManager;
 
@@ -48,6 +51,11 @@ public class HibernateConfig {
     public AbstractPlatformTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
         return transactionManager;
+    }
+
+    @Bean @Scope(value = "prototype", proxyMode = ScopedProxyMode.INTERFACES)
+    public Session session(SessionFactory sessionFactory) {
+        return sessionFactory.getCurrentSession();
     }
 
     private Properties hibernateProperties() {
