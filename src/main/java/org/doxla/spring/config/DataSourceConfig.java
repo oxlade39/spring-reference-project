@@ -1,4 +1,4 @@
-package org.doxla.spring;
+package org.doxla.spring.config;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;

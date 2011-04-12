@@ -1,4 +1,4 @@
-package org.doxla.spring;
+package org.doxla.spring.config;
 
 import org.springframework.context.annotation.Feature;
 import org.springframework.context.annotation.FeatureConfiguration;

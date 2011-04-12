@@ -1,4 +1,4 @@
-package org.doxla.spring;
+package org.doxla.spring.config;
 
 import org.doxla.lucene.CustomAnnotationSessionFactoryBean;
 import org.doxla.lucene.MySearchMapping;

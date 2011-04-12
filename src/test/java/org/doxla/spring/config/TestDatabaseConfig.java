@@ -1,14 +1,16 @@
-package org.doxla.domain.spring;
+package org.doxla.spring.config;
 
 import org.doxla.domain.DataCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
 import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.HSQL;
 
 @Configuration
+@Profile("test")
 public class TestDatabaseConfig {
 
     @Bean(destroyMethod = "shutdown")

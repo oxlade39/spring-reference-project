@@ -1,4 +1,4 @@
-package org.doxla.spring;
+package org.doxla.spring.config;
 
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;

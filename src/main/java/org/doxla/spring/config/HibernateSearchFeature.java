@@ -1,5 +1,6 @@
-package org.doxla.spring.hibernatesearch;
+package org.doxla.spring.config;
 
+import org.doxla.spring.hibernatesearch.HibernateSearchEnriched;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Feature;
 import org.springframework.context.annotation.FeatureConfiguration;

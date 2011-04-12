@@ -1,8 +1,7 @@
 package org.doxla.domain;
 
-import org.doxla.domain.spring.TestSpringLoader;
+import org.doxla.spring.config.TestSpringLoader;
 import org.hibernate.Session;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,8 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(loader = TestSpringLoader.class)
 @TransactionConfiguration
 @Transactional
-@Ignore("test infrastructre")
-public class AbstractHibernateTestInfrastructure {
+public abstract class AbstractHibernateTestInfrastructure {
 
     @Autowired
     private Session session;
