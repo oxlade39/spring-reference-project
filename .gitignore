@@ -2,3 +2,4 @@ exception-search.iml
 exception-search.ipr
 exception-search.iws
 target/
+.idea/
