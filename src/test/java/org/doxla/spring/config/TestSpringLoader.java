@@ -2,6 +2,7 @@ package org.doxla.spring.config;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.MergedContextConfiguration;
 import org.springframework.test.context.support.AbstractContextLoader;
 
 public class TestSpringLoader extends AbstractContextLoader {
@@ -19,5 +20,9 @@ public class TestSpringLoader extends AbstractContextLoader {
     @Override
     protected String getResourceSuffix() {
         return ".class";
+    }
+
+    public ApplicationContext loadContext(MergedContextConfiguration mergedConfig) throws Exception {
+        return null;
     }
 }

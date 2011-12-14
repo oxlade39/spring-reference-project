@@ -13,7 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--<spring.version>3.0.5.RELEASE</spring.version>-->
-        <spring.version>3.1.0.M1</spring.version>
+        <spring.version>3.1.0.RELEASE</spring.version>
         <!--<spring.version>3.1.0.RC1</spring.version>-->
     </properties>
 
@@ -165,31 +165,30 @@
     </build>
 
     <repositories>
+        <!--<repository>-->
+            <!--<id>com.springsource.repository.bundles.release</id>-->
+            <!--<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>-->
+            <!--<url>http://repository.springsource.com/maven/bundles/release</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>com.springsource.repository.bundles.external</id>-->
+            <!--<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>-->
+            <!--<url>http://repository.springsource.com/maven/bundles/external</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>SpringRepo</id>-->
+            <!--<name>Spring Maven Repository</name>-->
+            <!--<url>http://s3.amazonaws.com/maven.springframework.org/milestone</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>SpringRepo-milestone</id>-->
+            <!--<name>Spring Maven Repository</name>-->
+            <!--<url>http://maven.springframework.org/milestone</url>-->
+        <!--</repository>-->
         <repository>
-            <id>com.springsource.repository.bundles.release</id>
-            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
-            <url>http://repository.springsource.com/maven/bundles/release</url>
-        </repository>
-        <repository>
-            <id>com.springsource.repository.bundles.external</id>
-            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-            <url>http://repository.springsource.com/maven/bundles/external</url>
-        </repository>
-        <repository>
-            <id>SpringRepo</id>
-            <name>Spring Maven Repository</name>
-            <url>http://s3.amazonaws.com/maven.springframework.org/milestone</url>
-        </repository>
-        <repository>
-            <id>SpringRepo</id>
-            <name>Spring Maven Repository</name>
-            <url>http://maven.springframework.org/milestone</url>
-        </repository>
-        <repository>
-            <id>repository.jboss.org</id>
-            <name>JBoss Maven Repository</name>
-            <url>http://repository.jboss.org/maven2</url>
-            <layout>default</layout>
+            <id>repository.jboss.org-public</id>
+            <name>JBoss.org Maven repository</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public</url>
         </repository>
 
     </repositories>
