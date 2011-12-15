@@ -1,12 +1,12 @@
 package org.doxla.domain;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.util.StringUtils;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.HashSet;
@@ -14,7 +14,7 @@ import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
 
-@Entity
+@Entity @Configurable 
 public class ApplicationException {
     @Id @GeneratedValue
     private Long identity;
@@ -31,6 +31,12 @@ public class ApplicationException {
         this.exceptionTrace = exceptionTrace;
         this.checksum = DigestUtils.md5Hex(exceptionTraceAsBytes(exceptionTrace));
         addOccurrenceNow();
+    }
+    
+    @Autowired @Transient
+    Session session;
+    public Long save() {
+        return (Long) session.save(this);
     }
 
     public String getExceptionTrace() {
